@@ -14,11 +14,7 @@ Both Intel & Apple Silicon Macs are supported and the tool has been notarized fo
 
 ### Installation
 
-`soulver-cli` is available via [Homebrew](https://brew.sh) or as a downloadable binary from the [releases page][] or inside this repository.
-
-```
-$ brew install soulver-cli
-```
+`soulver-cli` is available as a downloadable binary or the releases page inside this repository.
 
 On first launch this tool automatically downloads a ~1MB package file entitled `SoulverCore_SoulverCore.bundle`. It contains json files required to bootstrap the calculation engine's features (unit names, natural function names, city names for timezone conversions, etc).
 
