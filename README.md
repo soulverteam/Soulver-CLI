@@ -1,6 +1,6 @@
 # Soulver CLI
 
-This is a free standalone command-line version of [Soulver](https://soulver.app). It's a great alternative to bc for your terminal.
+This is a free standalone command-line version of [Soulver](https://soulver.app). It's a great alternative to [bc](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/bc.html) for your terminal.
 
 This command line tool supports all the same calculation features at the Mac & iPad versions, including unit conversions, live currency conversions, date & time math & all supported natural language functions.
 
@@ -10,16 +10,21 @@ See Soulver's [documentation](https://documentation.soulver.app) for all support
 
 Requires macOS 12 or later. 
 
-Both Intel & Apple Silicon Macs are supported and the tool has been notarized for Gatekeeper.
+Both Intel & Apple Silicon Macs are supported. The tool is notarized and compatible with Gatekeeper.
 
 ### Installation
 
-The Soulver CLI is available as a downloadable binary or on the Github releases page for this repository.
+The easiest way to install the Soulver CLI is with [Homebrew](https://brew.sh):
 
-On first launch this tool automatically downloads a ~1MB package file entitled `SoulverCore_SoulverCore.bundle`. It contains json files required to bootstrap the calculation engine's features (unit names, natural function names, city names for timezone conversions, etc).
+```
+brew install soulver-cli
+```
 
-This bundle must exist in the same directory as the `soulver` executable for calculation to be performed.
+The Soulver CLI is also available as a downloadable binary from the Github releases page for this repository (or by cloning this repository).
 
+On first launch the tool will automatically download a ~1MB package file titled `SoulverCore_SoulverCore.bundle` to the same directory from which the tool is run. The bundle must remain in the same directory as the tool.
+
+The bundle contains json files required to bootstrap the calculation engine and support its various features (unit names, natural function names, city names for timezone conversions, etc). 
 ### Interactive mode
 
 Type `soulver` from Terminal (with no arguments) to open an interactive calculation mode (like bc):
