@@ -54,13 +54,13 @@ $25.78
 You can launch soulver with a direct argument to be evaluated:
 
 ```
-$ soulver "new timestamp"
+$ soulver 'new timestamp'
 1672646020
 ```
 
 Or via a pipe
 ```
-$ echo "123 + 456" | soulver
+$ echo '123 + 456' | soulver
 579
 ```
 
