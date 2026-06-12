@@ -1,6 +1,6 @@
 # Soulver CLI
 
-A standalone command-line version of [Soulver](https://soulver.app) — the notepad calculator — for macOS.
+A standalone command-line version of [Soulver](https://soulver.app) for macOS.
 
 Evaluate quick expressions, run a live interactive session, or read, write, and manipulate your Soulver sheetbooks from the terminal and from scripts.
 
