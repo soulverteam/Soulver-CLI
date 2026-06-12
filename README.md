@@ -2,7 +2,7 @@
 
 A standalone command-line version of [Soulver](https://soulver.app) for macOS.
 
-Evaluate quick expressions, run a live interactive session, or read, write, and manipulate your Soulver sheetbooks from the terminal and from scripts.
+Evaluate expressions, use an interactive session, or read and edit Soulver sheetbooks from the terminal and from scripts.
 
 ```sh
 $ soulver "25% off 159.99 + 10% tax"
@@ -27,7 +27,7 @@ Or download the latest signed, notarized binary from the [Releases](https://gith
 
 If you have the Soulver app installed, you can also install the bundled CLI from **Soulver → Install Command Line Tool…**, which symlinks the very same tool into `/usr/local/bin`.
 
-Currency and exchange rates are fetched live on first use and cached locally (`~/.config/soulver/currency-rates.json`), so conversions work offline after the first run and refresh automatically.
+Currency and exchange rates are fetched on first use and cached locally (`~/.config/soulver/currency-rates.json`), so conversions work offline after the first run and refresh automatically.
 
 ## Quick calculations
 
@@ -54,9 +54,8 @@ soulver --locale de_DE "1.000,50 + 1"   # 1001,5
 
 ## Interactive mode
 
-Run `soulver` with no arguments to enter an interactive session. Unlike a plain
-`bc`-style calculator, it's a stateful Soulver notepad — **variables and line
-references persist** across the session:
+Run `soulver` with no arguments to enter an interactive session. Variables and
+line references persist across the session:
 
 ```
 $ soulver
@@ -164,7 +163,7 @@ soulver inspect line --sheet "Budget" --line 1 --json
 
 ## Scripting & agents
 
-The CLI is designed to be driven by scripts, editor plugins, and AI agents:
+The CLI can be driven from scripts, editor plugins, and agents:
 
 - **`--json` on reads** — `sheet list`, `line list`, `search`, `inspect`, `variable list`, etc. return structured JSON.
 - **`--json` on writes** — create/append/set/mark/delete report what changed, so you can chain commands without scraping prose:
