@@ -182,12 +182,6 @@ soulver line list --sheet "Budget" --json
 soulver inspect line --sheet "Budget" --line 1 --json
 ```
 
-## Alfred
-
-Soulver ships an [Alfred](https://www.alfredapp.com) workflow that calls the
-bundled CLI directly — type a calculation into Alfred and press Return to copy the
-answer. The workflow is included with the Soulver app.
-
 ## Help
 
 ```sh
