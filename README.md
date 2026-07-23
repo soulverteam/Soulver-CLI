@@ -6,13 +6,13 @@ Evaluate expressions, use an interactive session, or read and edit Soulver sheet
 
 ```sh
 $ soulver "25% off 159.99 + 10% tax"
-131.99
+131.99175
 
 $ soulver "98 USD in EUR"
 €84.67
 
 $ echo "5 days from now" | soulver
-17 June 2026
+28 July 2026 at 8:36 am
 ```
 
 ## Install
@@ -34,9 +34,8 @@ Currency and exchange rates are fetched on first use and cached locally (`~/.con
 Pass an expression as an argument, or pipe it in:
 
 ```sh
-soulver "1,234.50 * 8% APR over 3 years"
+soulver '$1,000 for 3 years at 7% compounded quarterly'
 soulver "12 feet in cm"
-soulver "time in tokyo when it is 9am in new york"
 echo "150 GBP + 200 USD in AUD" | soulver
 ```
 
@@ -67,7 +66,7 @@ Soulver — interactive calculator. Type 'exit' or press Ctrl-D to quit.
 >>> line1 + 500
 2900
 >>> 1 BTC in USD
-US$63,238.43
+US$66150.61
 >>> exit
 ```
 
