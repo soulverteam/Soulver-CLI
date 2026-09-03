@@ -25,9 +25,9 @@ The Homebrew token stays `soulver-cli` (a bare `soulver` would mean the Mac app)
 
 Or download the latest signed, notarized binary from the [Releases](https://github.com/soulverteam/Soulver-CLI/releases) page and place `soulver` somewhere on your `PATH`.
 
-If you have the Soulver app installed, you can also install the bundled CLI from **Soulver → Install Command Line Tool…**, which symlinks the very same tool into `/usr/local/bin`.
+The Soulver app also bundles a copy, installed from **Soulver → Install Command Line Tool…**. That copy runs inside the app's sandbox, so it evaluates expressions but cannot read or edit sheetbooks; the sheetbook commands below need the Homebrew or downloaded build.
 
-Currency and exchange rates are fetched on first use and cached locally (`~/.config/soulver/currency-rates.json`), so conversions work offline after the first run and refresh automatically.
+Upgrading from a 1.x Homebrew install: if `soulver` exits at once naming a leftover `SoulverCore_SoulverCore.bundle` in `/opt/homebrew/bin`, delete that folder. The 1.x cask put it there and 2.x cannot use it.
 
 ## Quick calculations
 
@@ -51,6 +51,29 @@ Use `--locale` for locale-aware parsing and formatting:
 soulver --locale de_DE "1.000,50 + 1"   # 1001,5
 ```
 
+Other flags, on `soulver "…"` and `soulver eval "…"` alike:
+
+| Flag | Effect |
+|------|--------|
+| `--strict` | Exit 1 on anything not understood, instead of reading past it |
+| `--auto-convert` | Convert a lone result to its counterpart: `20 C` → `68 °F` |
+| `--dp <n>` | Decimal places |
+| `--json` | `{"ok": true, "expression": "2+2", "result": "4"}` |
+| `--offline` | Never refresh currency rates |
+| `--path <file>` | The sheetbook whose definition sheet and global variables apply |
+| `--no-definitions` | The stock engine, no sheetbook |
+
+Expressions are evaluated with your sheetbook's definition sheet and global variables, so a unit or variable defined in the app works here too.
+
+### Currency rates
+
+Rates are fetched from Soulver's rate service and cached in `~/.config/soulver/currency-rates.json`; each release also includes the rates from the day it was built. If a conversion uses rates older than 12 hours, a refresh runs in a background process and applies to the next evaluation. Evaluation never waits for the network, and expressions without a currency never use it.
+
+```sh
+soulver rates status     # rates in use and their age
+soulver rates refresh    # fetch now
+```
+
 ## Interactive mode
 
 Run `soulver` with no arguments to enter an interactive session. Variables and
@@ -58,7 +81,6 @@ line references persist across the session:
 
 ```
 $ soulver
-Soulver — interactive calculator. Type 'exit' or press Ctrl-D to quit.
 >>> rent = 2400
 2400
 >>> rent * 12
@@ -157,7 +179,7 @@ soulver new sheet --path ~/calc.slvr
 ### Inspect (for tooling & agents)
 
 ```sh
-soulver inspect line --sheet "Budget" --line 1 --json
+soulver inspect line --sheet "Budget" 1 --json
 ```
 
 ## Scripting & agents
@@ -178,7 +200,7 @@ The CLI can be driven from scripts, editor plugins, and agents:
 ```sh
 soulver sheet list --json
 soulver line list --sheet "Budget" --json
-soulver inspect line --sheet "Budget" --line 1 --json
+soulver inspect line --sheet "Budget" 1 --json
 ```
 
 ## Help
@@ -188,8 +210,3 @@ soulver --help
 soulver <command> --help
 soulver help <command> <subcommand>
 ```
-
----
-
-Soulver CLI is built on [SoulverCore](https://github.com/soulverteam/SoulverCore),
-the calculation engine behind Soulver.
